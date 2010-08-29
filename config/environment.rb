@@ -8,8 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem 'browsercms'
-  config.gem "activemerchant", :lib => "active_merchant" # Used for paypal express
-  config.gem 'oauth' # Use to encrypt the cart for google checkout
 
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

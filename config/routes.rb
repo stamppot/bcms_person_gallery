@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resources :random_person
+  # map.resources :random_person
   
   map.routes_for_bcms_persons
   map.routes_for_browser_cms
