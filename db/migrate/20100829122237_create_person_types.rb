@@ -2,7 +2,7 @@ class CreatePersonTypes < ActiveRecord::Migration
   def self.up
     create_versioned_table :person_types do |t|
       t.string :name 
-      t.string :order
+      t.string :position
       t.text :description, :size => (64.kilobytes + 1)
       # t.belongs_to :section
       # t.belongs_to :attachment

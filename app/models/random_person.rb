@@ -42,7 +42,7 @@ class RandomPerson
     path ||= "/persons/"
     persons = person_collection.person_types.map { |type| type.persons }.flatten
     person = self.random_element(array)
-    path += "#{person.person_type.order}/" + person.attachment.name
+    path += "#{person.person_type.position}/" + person.attachment.name
   end
 
   # equal chance to get person from person types
@@ -50,7 +50,7 @@ class RandomPerson
     path ||= "/persons/"
 
     persons_hash = person_collection.person_types.inject({}) do |result, type|
-      result[type.order] = type.persons
+      result[type.position] = type.persons
       result
     end
     rand_item = self.random_key(persons_hash)

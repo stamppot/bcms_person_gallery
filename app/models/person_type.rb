@@ -5,6 +5,6 @@ class PersonType < ActiveRecord::Base
   
   validates_presence_of :name
   validates_uniqueness_of :name
-  validates_presence_of :order
-  validates_uniqueness_of :order
+  validates_presence_of :position
+  validates_uniqueness_of :position
 end

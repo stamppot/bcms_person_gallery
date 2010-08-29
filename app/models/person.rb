@@ -19,17 +19,21 @@ class Person < ActiveRecord::Base
   named_scope :of_person_type, lambda { |id| { :conditions => ['person_type_id = ?', id] } }
 
   def self.columns_for_index
-    [ {:label => "Navn", :method => :name, :order => :person_type_order } ,
-      {:label => "Rækkefølge", :method => :order }
+    [ {:label => "Navn", :method => :person_name, :order => :person_type_order } ,
+      {:label => "Rækkefølge", :method => :default_order }
     ]
   end
 
   def self.default_order
-    "order"
+    self.position
   end
 
+  def person_name
+    self.name
+  end
+  
   def person_type_order
-    self.person_type.order
+    self.person_type.position
   end
   
   # def change_filename

@@ -34,7 +34,7 @@ module ApplicationHelper
     path ||= "/persons/"
     persons = person_collection.person_types.map { |type| type.persons }.flatten
     person = random_element(array)
-    path += "#{person.person_type.order}/" + person.attachment.name
+    path += "#{person.person_type.position}/" + person.attachment.name
   end
 
   # equal chance to get person from person types
