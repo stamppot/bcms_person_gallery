@@ -3,8 +3,9 @@ class Person < ActiveRecord::Base
   
   acts_as_content_block
   validates_presence_of :name
-  validates_presence_of :summary_description
-  validates_presence_of :description
+  # validates_presence_of :position
+  # validates_presence_of :summary_description
+  # validates_presence_of :description
   validates_each :person_type do |record, attr, value|
     if record.person_type
       record.errors.add attr, 'must be published' unless record.person_type.published?
@@ -24,10 +25,6 @@ class Person < ActiveRecord::Base
     ]
   end
 
-  # def self.default_order
-  #   self.position
-  # end
-
   def person_name
     self.name
   end
@@ -35,22 +32,8 @@ class Person < ActiveRecord::Base
   def person_type_order
     self.person_type.position
   end
-  
-  # def change_filename
-  #   name = Person.prefix + self.order.to_s
-  #   filename = name + File.extname(self.attachment.file_path)
-  #   
-  #   path = "/persons/#{self.person_type.order}/"
-  #   self.attachment.name = filename
-  #   self.attachment.file_path = path + filename
-  #   self.attachment.send(:update_without_callbacks)
-  #   self.attachment.versions.last.name = filename
-  #   self.attachment.versions.last.file_path = path + filename
-  #   self.attachment.versions.last.send(:update_without_callbacks)
-  # end
-  
-  # def self.prefix
-  #   "person-"
-  # end
 
+  def self.default_order
+    "position asc"
+  end
 end
