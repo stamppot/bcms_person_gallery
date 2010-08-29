@@ -34,7 +34,7 @@ module ApplicationHelper
     path ||= "/persons/"
     persons = person_collection.person_types.map { |type| type.persons }.flatten
     person = random_element(array)
-    path += "#{person.person_type.item_number}/" + person.attachment.name
+    path += "#{person.person_type.order}/" + person.attachment.name
   end
 
   # equal chance to get person from person types
@@ -42,7 +42,7 @@ module ApplicationHelper
     path ||= "/persons/"
 
     persons_hash = person_collection.person_types.inject({}) do |result, type|
-      result[type.item_number] = type.persons
+      result[type.order] = type.persons
       result
     end
     rand_item = random_key(persons_hash)

@@ -7,7 +7,7 @@ class CreatePersonPhotos < ActiveRecord::Migration
     end
 
     # Do not create the menu because Person Photos are handeled by the person form
-    #ContentType.create!(:name => "PersonPhoto", :group_name => "PersonPhoto")
+    # ContentType.create!(:name => "PersonPhoto", :group_name => "PersonPhoto")
   end
 
   def self.down

@@ -56,27 +56,27 @@ namespace :db do
           PersonType.create(:name => 'Rug', :danish_name => 'foo', :user_id => 0, :description => 'You can stand on it').publish!
           WoolType.create(:name => 'Sheep', :description => 'Some pretty common wool').publish!
           counter = 1
-          w = Person.create(:item_number => '001', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '001', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 231.21, :summary_description => 'Summary goes here.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3
-          w = Person.create(:item_number => '002', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '002', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 40.12, :summary_description => 'Summary goes here.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3
-          w = Person.create(:item_number => '003', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '003', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 432, :summary_description => 'Summary goes here.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3
-          w = Person.create(:item_number => '004', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '004', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 3, :summary_description => 'Summary goes here.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3
-          w = Person.create(:item_number => '005', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '005', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 95, :summary_description => 'Summary goes here.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3
-          w = Person.create(:item_number => '006', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
+          w = Person.create(:order => '006', :producer_id => Producer.find_by_name('Joe', :first).id, :person_type_id => PersonType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
             :selling_price => 1, :summary_description => 'I should have an image.', :description => 'Description of product here.', :published => true)
           set_up_person_photos w, counter ; counter += 3

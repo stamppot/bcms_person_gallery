@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  
+  map.routes_for_bcms_person_gallery
   # map.resources :random_person
-  
-  map.routes_for_bcms_persons
   map.routes_for_browser_cms
 
   # The priority is based upon order of creation: first created -> highest priority.

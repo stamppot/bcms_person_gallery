@@ -1,1 +1,1 @@
-require 'bcms_persons/routes'
+require 'bcms_person_gallery/routes'

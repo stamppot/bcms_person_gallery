@@ -33,10 +33,10 @@ class Person < ActiveRecord::Base
   end
   
   # def change_filename
-  #   name = Person.prefix + self.item_number.to_s
+  #   name = Person.prefix + self.order.to_s
   #   filename = name + File.extname(self.attachment.file_path)
   #   
-  #   path = "/persons/#{self.person_type.item_number}/"
+  #   path = "/persons/#{self.person_type.order}/"
   #   self.attachment.name = filename
   #   self.attachment.file_path = path + filename
   #   self.attachment.send(:update_without_callbacks)
