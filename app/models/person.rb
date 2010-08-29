@@ -20,13 +20,13 @@ class Person < ActiveRecord::Base
 
   def self.columns_for_index
     [ {:label => "Navn", :method => :person_name, :order => :person_type_order } ,
-      {:label => "Rækkefølge", :method => :default_order }
+      {:label => "Rækkefølge", :method => :position }
     ]
   end
 
-  def self.default_order
-    self.position
-  end
+  # def self.default_order
+  #   self.position
+  # end
 
   def person_name
     self.name
