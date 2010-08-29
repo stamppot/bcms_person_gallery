@@ -20,7 +20,7 @@ class Person < ActiveRecord::Base
 
   def self.columns_for_index
     [ {:label => "Navn", :method => :name } ,
-      {:label => "Type", :method => :person_type_order, :order => "person_type_id" }
+      {:label => "Rækkefølge", :method => :order, :order => "order asc" }
     ]
   end
 
