@@ -1,0 +1,16 @@
+<%= f.cms_text_field :name %>
+<%= f.cms_text_field :danish_name %>
+<div class="fields">
+<h3>Person types</h3>
+<ul>
+<% @person_types.each do |person_type| %>
+	<li style="list-style-type: none;">
+		<%= check_box_tag "person_collection[person_type_ids][]", person_type.id, @person_collection.person_types.include?(person_type) -%> <%= person_type.name -%>
+	</li>
+<% end %>
+</ul>
+</div>
+<%= f.cms_drop_down :section_id, Section.not_hidden(:order => "name").map{|e| [e.name, e.id]} %>
+
+
+<%= f.cms_text_editor :description %>

@@ -1,0 +1,108 @@
+#  Persons Module for BrowserCMS
+
+A module to add random persons
+
+## Installation for the impatient
+1. gem install bcms_persons
+2. add config.gem 'bcms_persons' to environment.rb
+3. add  map.routes_for_bcms_persons to routes.rb
+4. script/generate browser
+5. rake db:migrate
+6. add <%= get_random_person %> to your template, or to use without a helper method insert something like this: 
+	 <img class='person' src='/random_persons/show/<%= @page.section_id %>' />
+7. add person types, persons, and a person collection in the CMS Administration part
+
+For updating persons every n seconds, see below.
+
+
+## Installation
+These instructions are adapted from those found at http://www.browsercms.org/doc/guides/html/installing_modules.html.
+
+To install this module, do the following:
+
+### A. Build and install the gem from source
+This assumes you have the latest copy of the code from github on your machine.
+
+        gem build bcms_persons.gemspec
+        sudo gem install bcms_persons-1.0.0.gem
+
+At this point, the  Persons gem should be installed as a gem on your system, and can be added to your projects.
+
+### B. Adding the  Persons module to your project
+In your BrowserCMS application, do the following steps.
+
+#### 1. Edit the config/environment.rb file
+
+		config.gem 'browsercms'
+
+		# Add this next line after the browsercms gem
+		config.gem 'bcms_persons'
+
+#### 2. Edit the config/routes.rb file
+
+
+		# Add this route. It must be before the core browser_cms route.
+		map.routes_for_bcms_persons
+		map.routes_for_browser_cms
+
+#### 3. Install the new module code
+From the root directory of your cms project, run:
+
+		script/generate browser_cms
+
+This will copy all the necessary views and migrations from the gems into your local project.
+You should messages checking to see if files already exist or were created.
+
+#### 4. Run migrations and start the server
+This module will add new data types, like content blocks, so you need to run the migrations to add them to your project.
+
+		rake db:migrate
+		script/server
+
+#### 5. Installation Complete
+* Open your browser to localhost:3000/cms/portlets and login
+
+
+To get random persons in your BrowserCMS project: 
+
+Random image: on your page, template or partial, insert this snippet: <%= get_random_person %>  
+
+Random images with a time interval: 
+1. Create a controller action in your project which calls Person.random(page, true)
+2. Include the following javascripts:
+	 <%= javascript_include_tag 'jquery-1.2.6.min' %>
+   <%= javascript_include_tag 'jquery-timers-1.0.0', 'random_persons' %>
+3. Add route in your own project's routes.rb above routes_for_bcms_persons:
+	 map.resources :random_person
+   map.routes_for_bcms_persons
+4. Use jquery or similar to call the controller in the document.ready function
+
+Issues:
+Javascripts are not copied automatically on my machine, so you might have to cp the folder public/bcms_bcms_persons/javascripts
+to your own project's public folder.
+
+See full example below:
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Simple Time Interval Page Element Refresh using JQuery and a sprinkle of Ajax</title>
+	 <%= javascript_include_tag 'jquery' %>
+	 <%= javascript_include_tag '/bcms/bcms_persons/javascripts/jquery.timers-1.0.0.js' %>
+	 <%= javascript_include_tag '/bcms/bcms_persons/javascripts/random_person.js' %>
+
+  <script type="text/javascript">
+    var page_id = <%= @page.id %>;
+    jQuery(document).ready(function()
+    {
+       random_person(page_id, "img.content_person", 5000) /* page_id, person class, time in ms */
+    });
+  </script>
+
+</head>
+<body>
+	<img class="refreshPerson" src="/persons/person1.jpg" />
+</body>
+</html>
+
+

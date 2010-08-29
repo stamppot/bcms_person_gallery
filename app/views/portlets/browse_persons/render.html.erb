@@ -1,0 +1,18 @@
+<% @person_types.each do |person_type| %>
+	<ul>
+		<li>
+			<%= link_to person_type.name, '?type=' + person_type.id.to_s %>
+		</li>
+	</ul>
+<% end %>
+
+<% if @search_results_summary %>
+	<h3><%= @search_results_summary %></h3>
+	<% if @persons_to_browse %>
+		<% @persons_to_browse.each do |person| %>
+			<li>
+				<%=h person.name %> is a person of type <%= person.person_type.name %>. %>.
+			</li>
+		<% end %>
+	<% end %>
+<% end %>

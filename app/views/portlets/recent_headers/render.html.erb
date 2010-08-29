@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/persons/persons.css" />
+
+<h1>What's New?</h1>
+<% @persons.each do |person| %>
+	<% if person.published && !person.cart_id %>
+		<div class="personCard" id="PersonView_<%= person.id.to_s %>_personCard">
+		    <table cellspacing="0" cellpadding="0" class="personPhotoContainer">
+		        <tbody><tr><td style="padding: 0pt;">
+		            <a href="/persons/person?id=<%= person.id.to_s %>" id="person_<%= person.id.to_s %>_photo_link"><img style="border-width: 0px;" alt="photo" width="235px" height="176px" src="<%= person.attachment_link ? person.attachment_link : 'broken' %>" id="person_<%= person.id.to_s %>_photo"></a>
+		        </td></tr>
+		    </tbody></table>
+		    <div class="personSummaryContainer">
+		        <a style="font-weight: bold;" class="dotted" id="person_<%= person.id.to_s %>_summary" href="/persons/person?id=<%= person.id.to_s %>"><%= person.summary_description %></a>
+		    </div>
+			<span style='text-align: center;'>
+			    <div class="personType" id="person_<%= person.id.to_s %>_type"><%= person.person_type.name %></div>
+			</span>
+		</div>
+	<% end %>
+<% end %>

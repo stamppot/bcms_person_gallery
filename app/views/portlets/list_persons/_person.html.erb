@@ -1,0 +1,28 @@
+<%- img_src = if person.blank? || person.person_photos.blank? || person.person_photos.first.blank?
+				"/themes/dyrgod/images/logo_no_text_small.png"
+			else
+				person.person_photos.first.attachment.file_path
+			end
+			thumb_src = if person.blank? || person.person_photos.blank? || person.person_photos.second.blank?
+							"/themes/dyrgod/images/logo_no_text_small.png"
+						else
+							person.person_photos.second.attachment.file_path
+						end
+			
+			person_name = person && "<div class='name'>#{person.name}</div>"
+			person_title = person.person_type && "<div class='title'>#{person.person_type.name}</div>"
+			person_summ = person && truncate(person.summary_description, 140)
+%>
+
+<table class='person'>
+	<tr>
+		<td class='photo'>
+			<a href="<%= img_src %>" class="lightbox" rel="personale1" title="Carsten"> <img src="/border_320x240.png" alt="<%= person_title %> <%= person_name %>" class="visual_image" style="background-image: url(&quot;<%= thumb_src %>&quot;);"></a>
+		</td>
+	</tr>
+	<tr>
+		<td class='person_info'>
+			<div class='person_name'><%= person_name %></div><div class='summary'><%= person_summ %></div>
+		</td>
+	</tr>
+</table>
