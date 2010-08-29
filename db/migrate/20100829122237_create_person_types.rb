@@ -10,7 +10,7 @@ class CreatePersonTypes < ActiveRecord::Migration
     end
 
     if !ContentType.exists?(:name => "PersonType")
-      ContentType.create!(:name => "PersonType", :group_name => "Persons")
+      ContentType.create!(:name => "PersonType", :group_name => "Personale")
     end
   end
 
